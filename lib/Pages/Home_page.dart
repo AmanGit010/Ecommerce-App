@@ -1,3 +1,4 @@
+import 'package:ecomm_app/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -9,7 +10,7 @@ class Homepage extends StatelessWidget {
           title: Text("Ecommerce"),
           backgroundColor: Color.fromARGB(255, 0, 0, 0),
         ),
-        drawer: Drawer(),
+        drawer: MyDrawer(),
         body: Center(
           child: Container(
             child: Text("My first Ecommerce App!!"),
