@@ -1,7 +1,16 @@
 import "package:ecomm_app/utils/routes.dart";
 import "package:flutter/material.dart";
 
-class Loginpage extends StatelessWidget {
+class Loginpage extends StatefulWidget {
+  @override
+  State<Loginpage> createState() => _LoginpageState();
+}
+
+class _LoginpageState extends State<Loginpage> {
+  String name =
+      ""; //initialising an empy variable to override its value simultaneously when the user enter their username in the field.
+  bool changebutton = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,7 +28,7 @@ class Loginpage extends StatelessWidget {
                 height: 20.0,
               ),
               Text(
-                "Welcome",
+                "Welcome $name",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 35,
@@ -36,6 +45,11 @@ class Loginpage extends StatelessWidget {
                     TextFormField(
                       decoration: InputDecoration(
                           hintText: "Username", labelText: "Enter Username"),
+                      onChanged: (value) {
+                        //here i'm changing the state of the username textformfield which then will show next to the "Welcome" text.
+                        name = value;
+                        setState(() {});
+                      },
                     ),
                     TextFormField(
                       obscureText: true,
@@ -53,6 +67,40 @@ class Loginpage extends StatelessWidget {
                       style: TextButton.styleFrom(
                           backgroundColor: Color.fromARGB(255, 116, 49, 204),
                           minimumSize: Size(100, 40)),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        setState(() {
+                          changebutton = true;
+                        });
+
+                        await Future.delayed(Duration(seconds: 1));
+                        Navigator.pushNamed(context, MyRoutes.homeRoute);
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(seconds: 1),
+                        //button
+                        width: changebutton ? 60 : 110,
+                        height: 40,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.deepPurple,
+                            borderRadius:
+                                BorderRadius.circular(changebutton ? 20 : 7)),
+                        child: changebutton
+                            ? Icon(
+                                Icons.done,
+                                color: Colors.white,
+                              )
+                            : Text(
+                                "Login",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                      ),
                     )
                   ],
                 ),
