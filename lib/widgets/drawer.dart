@@ -6,7 +6,7 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Image = "Images/profile.png";
+    // final Image = "Images/profile.png";
     return Drawer(
       child: Container(
         color: Colors.deepPurple,
@@ -21,8 +21,8 @@ class MyDrawer extends StatelessWidget {
                 accountName: Text("Amanjot Singh"),
                 accountEmail: Text("amanjot3290@gmail.com"),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage(Image),
-                ),
+                    // backgroundImage: AssetImage(Image),
+                    ),
               ),
             ),
             ListTile(

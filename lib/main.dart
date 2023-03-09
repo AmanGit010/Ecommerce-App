@@ -20,7 +20,7 @@ class Ecommapp extends StatelessWidget {
       ),
       initialRoute: MyRoutes.homeRoute,
       routes: {
-        "/": (context) => Homepage(),
+        "/": (context) => Loginpage(),
         MyRoutes.homeRoute: (context) => Homepage(),
         MyRoutes.loginRoute: (context) => Loginpage(),
       },
